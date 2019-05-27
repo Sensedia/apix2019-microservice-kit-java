@@ -11,7 +11,7 @@ import com.sensedia.apix2019.kit.enumeration.Type;
 import lombok.Data;
 
 @Data
-public class Items {
+public class Item {
 
     private Type type;
     private Color color;

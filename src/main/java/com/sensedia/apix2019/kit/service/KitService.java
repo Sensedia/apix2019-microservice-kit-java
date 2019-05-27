@@ -38,25 +38,17 @@ public class KitService {
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
-    public void createRecommendation(String id, RecommendationRequest recommendationRequest) {
-        Kit kit = kitRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+    public void createRecommendation(RecommendationRequest recommendationRequest) {
+        Kit kit = kitRepository.findById(recommendationRequest.getId()).orElseThrow(ResourceNotFoundException::new);
         List<Recommendation> recommendations = new ArrayList<>();
         AtomicInteger kitGroup = new AtomicInteger();
-        recommendationRequest.getFirstRecommendations().stream().forEach(item -> {
-            Recommendation entity = item.toEntity(kit, kitGroup.get());
-            recommendations.add(entity);
+        recommendationRequest.getRecommendations().forEach(recommendation -> {
+            recommendation.getItems().forEach(item -> {
+                Recommendation entity = item.toEntity(kit, kitGroup.get());
+                recommendations.add(entity);
+            });
+            kitGroup.incrementAndGet();
         });
-        kitGroup.incrementAndGet();
-        recommendationRequest.getSecondRecommendations().stream().forEach(item -> {
-            Recommendation entity = item.toEntity(kit, kitGroup.get());
-            recommendations.add(entity);
-        });
-        kitGroup.incrementAndGet();
-        recommendationRequest.getThirdRecommendations().stream().forEach(item -> {
-            Recommendation entity = item.toEntity(kit, kitGroup.get());
-            recommendations.add(entity);
-        });
-
         recommendationRepository.saveAll(recommendations);
     }
 

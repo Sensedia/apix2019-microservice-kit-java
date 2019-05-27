@@ -22,10 +22,4 @@ public class KitSender {
         log.info("Message sent.");
     }
 
-    public void recommendation(String message) {
-        log.info("Sending message: {}", message);
-        rabbitTemplate.convertAndSend(applicationConfig.getRecommendationQueue(), message);
-        log.info("Message sent.");
-    }
-
 }

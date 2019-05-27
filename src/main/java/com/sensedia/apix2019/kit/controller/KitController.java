@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.sensedia.apix2019.kit.request.KitRequest;
-import com.sensedia.apix2019.kit.request.RecommendationRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.service.KitService;
 
@@ -38,13 +37,6 @@ public class KitController {
     public ResponseEntity<KitResponse> kitById(@PathVariable String id) {
         KitResponse kitDto = kitService.findById(id);
         return ResponseEntity.ok(kitDto);
-    }
-
-    @PostMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<KitResponse> createRecommendation(@PathVariable String id,
-            @RequestBody RecommendationRequest recommendationRequest) {
-        kitService.createRecommendation(id, recommendationRequest);
-        return ResponseEntity.ok().build();
     }
 
 }

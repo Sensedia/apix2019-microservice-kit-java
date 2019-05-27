@@ -26,9 +26,9 @@ public class JsonConfig {
         }
     }
 
-    public <T> T toObject(String string, Class<T> classe) {
+    public <T> T toObject(byte[] json, Class<T> classe) {
         try {
-            return objectMapper.readValue(string, classe);
+            return objectMapper.readValue(json, classe);
         } catch (IOException e) {
             log.error(e.getMessage());
             throw new IllegalStateException();
