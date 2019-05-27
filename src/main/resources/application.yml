@@ -18,7 +18,7 @@ spring:
     username: root
     password: apix2019
   rabbitmq:
-    host: 172.22.0.4
+    host: 172.22.0.3
     port: 5672
     #username: sensedia
     #password: apix2019

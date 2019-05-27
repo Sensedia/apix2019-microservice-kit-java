@@ -17,6 +17,8 @@ public class KitResponse {
     private String phone;
     private Gender gender;
     private List<SpecificationResponse> specifications;
-    private List<RecommendationReponse> recommendations;
+    private List<RecommendationReponse> firstRecommendations;
+    private List<RecommendationReponse> secondRecommendations;
+    private List<RecommendationReponse> thirdRecommendations;
 
 }

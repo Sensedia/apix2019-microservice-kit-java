@@ -8,6 +8,8 @@ import lombok.Data;
 public class RecommendationRequest {
 
     private String id;
-    private List<Items> recommendations;
+    private List<Items> firstRecommendations;
+    private List<Items> secondRecommendations;
+    private List<Items> thirdRecommendations;
 
 }
