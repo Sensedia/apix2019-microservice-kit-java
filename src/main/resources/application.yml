@@ -1,11 +1,9 @@
 server:
-  port: 8080
+  port: 8088
 
 spring:
   jackson:
     default-property-inclusion: NON_NULL
-    serialization:
-      write_dates_as_timestamps: false
   jpa:
     show-sql: true
     properties:
@@ -18,7 +16,7 @@ spring:
     username: root
     password: apix2019
   rabbitmq:
-    host: 172.22.0.2
+    host: 172.19.0.10
     port: 5672
 
 queue:

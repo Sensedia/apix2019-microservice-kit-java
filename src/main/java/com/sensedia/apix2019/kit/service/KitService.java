@@ -6,8 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 
+import com.sensedia.apix2019.kit.config.JsonConfig;
 import com.sensedia.apix2019.kit.entity.Kit;
 import com.sensedia.apix2019.kit.entity.Recommendation;
+import com.sensedia.apix2019.kit.entity.Specification;
+import com.sensedia.apix2019.kit.exception.PreconditionFailedException;
 import com.sensedia.apix2019.kit.exception.ResourceNotFoundException;
 import com.sensedia.apix2019.kit.repository.KitRepository;
 import com.sensedia.apix2019.kit.repository.RecommendationRepository;
@@ -25,10 +28,23 @@ public class KitService {
     private final KitRepository kitRepository;
     private final KitSender kitSender;
     private final RecommendationRepository recommendationRepository;
+    private final JsonConfig jsonConfig;
 
     public String create(KitRequest kitRequest) {
-        Kit entity = kitRepository.save(kitRequest.toEntity());
-        kitSender.send(entity.toResponse().toString());
+
+        if (kitRequest.getSpecifications().size() != 3) {
+            throw new PreconditionFailedException("Number of spacifications are invalid.");
+        }
+
+        Kit entity = kitRequest.toEntity();
+        if (entity.getSpecifications().stream().map(Specification::getType).distinct().count() != 3) {
+            throw new PreconditionFailedException("There are duplicated types of specifications");
+        }
+
+        kitRepository.save(entity);
+        String kitJson = jsonConfig.toJson(entity.toQueue());
+        kitSender.send(kitJson);
+
         return entity.getId();
     }
 

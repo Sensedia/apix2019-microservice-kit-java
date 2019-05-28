@@ -24,7 +24,11 @@ public class KitReceiver {
         log.info("Message received:  {}", message.toString());
         RecommendationRequest recommendationRequest = jsonConfig.toObject(message.getBody(),
                 RecommendationRequest.class);
-        kitService.createRecommendation(recommendationRequest);
+        try {
+            kitService.createRecommendation(recommendationRequest);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
 }

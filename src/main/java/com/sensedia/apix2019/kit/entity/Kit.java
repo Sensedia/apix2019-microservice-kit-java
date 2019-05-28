@@ -1,5 +1,6 @@
 package com.sensedia.apix2019.kit.entity;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,11 +45,11 @@ public class Kit {
 
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "kit")
-    private List<Specification> specifications = List.of();
+    private List<Specification> specifications = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "kit")
-    private List<Recommendation> recommendations = List.of();
+    private List<Recommendation> recommendations = new ArrayList<>();
 
     public KitResponse toResponse() {
         Comparator<SpecificationResponse> typeSpecComparator = (t1, t2) -> t1.getType().name()
@@ -67,6 +68,17 @@ public class Kit {
                         .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList()))
                 .thirdRecommendations(recommendations.stream().filter(x -> x.getKitGroup() == 2)
                         .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList()))
+                .build();
+    }
+
+    public KitResponse toQueue() {
+        return KitResponse.builder()
+                .id(id)
+                .phone(phone)
+                .gender(gender)
+                .specifications(specifications.stream()
+                        .map(Specification::toResponse)
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

@@ -1,13 +1,16 @@
 package com.sensedia.apix2019.kit.request;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sensedia.apix2019.kit.entity.Kit;
 import com.sensedia.apix2019.kit.entity.Specification;
 import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Gender;
 import com.sensedia.apix2019.kit.enumeration.Type;
+import com.sensedia.apix2019.kit.exception.TypeDeserializer;
 
 import lombok.Data;
 
@@ -16,7 +19,7 @@ public class KitRequest {
 
     private String phone;
     private Gender gender;
-    private List<SpecificationRequest> specifications;
+    private List<SpecificationRequest> specifications = new ArrayList<>();
 
     public Kit toEntity() {
         Kit kit = Kit.builder()
@@ -37,6 +40,7 @@ public class KitRequest {
 @Data
 class SpecificationRequest {
 
+    @JsonDeserialize(using = TypeDeserializer.class)
     private Type type;
     private Color color;
 
