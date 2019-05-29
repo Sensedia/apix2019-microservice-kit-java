@@ -1,7 +1,6 @@
 package com.sensedia.apix2019.kit.entity;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 
 import javax.persistence.Entity;
@@ -67,7 +66,7 @@ public class Recommendation {
                 .price(price)
                 .link(link)
                 .image(image)
-                .date(LocalDate.ofInstant(Instant.ofEpochMilli(date), ZoneId.systemDefault()))
+                .date(Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate())
                 .build();
     }
 

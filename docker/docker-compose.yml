@@ -4,7 +4,7 @@ services:
     image: sensedia/apix2019-microservice-kit-java
     container_name: kit
     ports:
-      - "5060:8080"
+      - "5060:8088"
     networks:
       - apix2019
 networks:
