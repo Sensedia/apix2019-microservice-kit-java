@@ -1,7 +1,8 @@
 package com.sensedia.apix2019.kit.entity;
 
-import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -43,13 +44,13 @@ public class Recommendation {
 
     private String title;
 
-    private BigDecimal price;
+    private Double price;
 
     private String link;
 
     private String image;
 
-    private LocalDate date;
+    private Long date;
 
     private int kitGroup;
 
@@ -66,7 +67,7 @@ public class Recommendation {
                 .price(price)
                 .link(link)
                 .image(image)
-                .date(date)
+                .date(LocalDate.ofInstant(Instant.ofEpochMilli(date), ZoneId.systemDefault()))
                 .build();
     }
 

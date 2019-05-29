@@ -59,7 +59,7 @@ public class KitService {
         List<Recommendation> recommendations = new ArrayList<>();
         AtomicInteger kitGroup = new AtomicInteger();
         recommendationRequest.getRecommendations().forEach(recommendation -> {
-            recommendation.getItems().forEach(item -> {
+            recommendation.forEach(item -> {
                 Recommendation entity = item.toEntity(kit, kitGroup.get());
                 recommendations.add(entity);
             });

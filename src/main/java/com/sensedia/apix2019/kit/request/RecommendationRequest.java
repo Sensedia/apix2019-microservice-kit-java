@@ -8,7 +8,6 @@ import lombok.Data;
 public class RecommendationRequest {
 
     private String id;
-    private String gender;
-    private List<KitRecommendationRequest> recommendations;
+    private List<List<Item>> recommendations;
 
 }

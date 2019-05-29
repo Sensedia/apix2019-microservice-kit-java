@@ -1,6 +1,5 @@
 package com.sensedia.apix2019.kit.response;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.sensedia.apix2019.kit.enumeration.Color;
@@ -17,7 +16,7 @@ public class RecommendationReponse {
     private Type type;
     private Color color;
     private String title;
-    private BigDecimal price;
+    private Double price;
     private String link;
     private String image;
     private LocalDate date;
