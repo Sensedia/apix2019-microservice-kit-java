@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.sensedia.apix2019.kit.Deserializer.TypeDeserializer;
+import com.sensedia.apix2019.kit.deserializer.TypeDeserializer;
 import com.sensedia.apix2019.kit.entity.Kit;
 import com.sensedia.apix2019.kit.entity.Specification;
 import com.sensedia.apix2019.kit.enumeration.Color;

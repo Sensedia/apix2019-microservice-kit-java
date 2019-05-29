@@ -31,9 +31,9 @@ public class KitReceiver {
             kitService.createRecommendation(recommendationRequest);
 
         } catch (ResourceNotFoundException e) {
-            log.error("Message not fount", e);
+            log.error("Message not fund", e);
         } catch (IllegalStateException e) {
-            log.error("Error parsing Json");
+            log.error("Erro parsing json", e);
         }
     }
 

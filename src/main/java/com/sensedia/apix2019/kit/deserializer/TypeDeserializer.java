@@ -1,4 +1,4 @@
-package com.sensedia.apix2019.kit.Deserializer;
+package com.sensedia.apix2019.kit.deserializer;
 
 import java.io.IOException;
 
