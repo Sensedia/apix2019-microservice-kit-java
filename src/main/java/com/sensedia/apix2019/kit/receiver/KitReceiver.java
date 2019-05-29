@@ -25,12 +25,13 @@ public class KitReceiver {
         log.info("Message received: {}", message.toString());
 
         try {
+
             RecommendationRequest recommendationRequest = jsonConfig.toObject(message.getBody(),
                     RecommendationRequest.class);
             kitService.createRecommendation(recommendationRequest);
 
         } catch (ResourceNotFoundException e) {
-            log.error("Message not fount");
+            log.error("Message not fount", e);
         } catch (IllegalStateException e) {
             log.error("Error parsing Json");
         }
