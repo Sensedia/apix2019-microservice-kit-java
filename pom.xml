@@ -12,9 +12,9 @@
 	</parent>
 
 	<groupId>com.sensedia.apix2019</groupId>
-	<artifactId>api2019-microservice-kit-java</artifactId>
+	<artifactId>apix2019-microservice-kit-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>API2019 Microservice Kit Java</name>
+	<name>APIX2019 Microservice Kit Java</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,46 +85,6 @@
 							<location>etc/eclipse/org.eclipse.jdt.core.prefs</location>
 						</file>
 					</additionalConfig>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>${fabric8-docker-plugin.version}</version>
-				<configuration>
-					<images>
-						<image>
-							<name>api2019/${project.artifactId}</name>
-							<build>
-								<from>openjdk:8-jre-alpine3.7</from>
-								<entryPoint>java -jar /application/${project.build.finalName}.jar</entryPoint>
-								<assembly>
-									<basedir>/application</basedir>
-									<descriptorRef>artifact</descriptorRef>
-									<inline>
-										<id>assembly</id>
-										<files>
-											<file>
-												<source>target/${project.build.finalName}.jar</source>
-											</file>
-										</files>
-									</inline>
-								</assembly>
-								<tags>
-									<tag>latest</tag>
-									<tag>${project.version}</tag>
-								</tags>
-								<ports>
-									<port>8080</port>
-								</ports>
-							</build>
-							<run>
-								<namingStrategy>alias</namingStrategy>
-							</run>
-							<alias>${project.build.finalName}
-							</alias>
-						</image>
-					</images>
 				</configuration>
 			</plugin>
 		</plugins>

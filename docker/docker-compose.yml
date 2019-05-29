@@ -1,0 +1,13 @@
+version: '3.6'
+services:
+  apix2019-microservice-kit-java:
+    image: sensedia/apix2019-microservice-kit-java
+    container_name: kit
+    ports:
+      - "5060:8080"
+    networks:
+      - apix2019
+networks:
+  apix2019:
+    external:
+      name: apix2019-infra_apix2019
