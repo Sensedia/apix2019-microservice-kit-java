@@ -20,5 +20,6 @@ public class RecommendationReponse {
     private String link;
     private String image;
     private LocalDate date;
+    private Boolean chosen;
 
 }

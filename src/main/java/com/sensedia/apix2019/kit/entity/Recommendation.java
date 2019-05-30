@@ -53,6 +53,8 @@ public class Recommendation {
 
     private int kitGroup;
 
+    private boolean chosen;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kit_id")
     private Kit kit;
@@ -67,6 +69,7 @@ public class Recommendation {
                 .link(link)
                 .image(image)
                 .date(Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate())
+                .chosen(chosen)
                 .build();
     }
 

@@ -3,6 +3,7 @@ package com.sensedia.apix2019.kit.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,13 @@ public class KitService {
         return kitRepository.findById(id)
                 .map(Kit::toResponse)
                 .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    public List<KitResponse> findByPhone(String phone) {
+        return kitRepository.findByPhone(phone).stream()
+                .map(Kit::toResponse)
+                .collect(Collectors.toList());
+
     }
 
     public void createRecommendation(RecommendationRequest recommendationRequest) {
