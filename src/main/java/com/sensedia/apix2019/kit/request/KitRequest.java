@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.sensedia.apix2019.kit.deserializer.ColorDeserializer;
+import com.sensedia.apix2019.kit.deserializer.GenderDeserializer;
 import com.sensedia.apix2019.kit.deserializer.TypeDeserializer;
 import com.sensedia.apix2019.kit.entity.Kit;
 import com.sensedia.apix2019.kit.entity.Specification;
@@ -18,6 +20,7 @@ import lombok.Data;
 public class KitRequest {
 
     private String phone;
+    @JsonDeserialize(using = GenderDeserializer.class)
     private Gender gender;
     private List<SpecificationRequest> specifications = new ArrayList<>();
 
@@ -42,6 +45,8 @@ class SpecificationRequest {
 
     @JsonDeserialize(using = TypeDeserializer.class)
     private Type type;
+
+    @JsonDeserialize(using = ColorDeserializer.class)
     private Color color;
 
     public Specification toEntity(Kit kit) {
