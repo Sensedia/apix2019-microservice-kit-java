@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.sensedia.apix2019.kit.request.KitRequest;
+import com.sensedia.apix2019.kit.request.RecommendationsPatchRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.service.KitService;
 
@@ -57,11 +58,9 @@ public class KitController {
     }
 
     @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Void> partiallyUpdate(@RequestBody String recommendations,
-            @PathVariable String id) {
-
-        kitService.setRecommendationSelected(recommendations, id);
-
+    public ResponseEntity<Void> partiallyUpdate(@PathVariable String id,
+            @RequestBody RecommendationsPatchRequest recommendationsPatchRequest) {
+        kitService.updateSelectedRecommendations(id, recommendationsPatchRequest);
         return ResponseEntity.noContent().build();
     }
 
