@@ -77,40 +77,16 @@ public class KitService {
         recommendationRepository.saveAll(recommendations);
     }
 
-    public void setRecommendationSelected(String recommendationsPatch, String kitId) {
+    public void updateSelectedRecommendations(String kitId, RecommendationsPatchRequest recommendationsPatchRequest) {
         Kit kit = kitRepository.findById(kitId).orElseThrow(ResourceNotFoundException::new);
-
-        RecommendationsPatchRequest recommendationsPatchRequest = jsonConfig.toObject(recommendationsPatch,
-                RecommendationsPatchRequest.class);
-
-        System.out.println(recommendationsPatchRequest);
-
-        kit.getRecommendations().forEach(recommendation -> {
-            recommendationsPatchRequest.getRecommendations().getId().forEach(id -> {
-                if (recommendation.getKitGroup() == id) {
-                    recommendation.setChosen(true);
-                }
-            });
-        });
+        kit.getRecommendations()
+                .forEach(recommendation -> recommendationsPatchRequest.getRecommendations().forEach(id -> {
+                    if (recommendation.getKitGroup() == id.getId()) {
+                        recommendation.setChosen(true);
+                    }
+                }));
 
         recommendationRepository.saveAll(kit.getRecommendations());
     }
 
-    // public void setRecommendationSelected(List<String> recommendationsId,
-    // String kitId) {
-    // Kit kit =
-    // kitRepository.findById(kitId).orElseThrow(ResourceNotFoundException::new);
-    //
-    // kit.getRecommendations().forEach(recommendation -> {
-    // System.out.println("idREcomendation " + recommendation.getId());
-    // recommendationsId.forEach(recommendationId -> {
-    // if (recommendation.getId().equals(recommendationId)) {
-    // recommendation.setChosen(true);
-    // }
-    // });
-    //
-    // });
-    //
-    // recommendationRepository.saveAll(kit.getRecommendations());
-    // }
 }
