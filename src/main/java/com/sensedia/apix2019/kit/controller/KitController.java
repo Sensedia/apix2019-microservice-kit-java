@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +54,15 @@ public class KitController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(kits);
+    }
+
+    @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Void> partiallyUpdate(@RequestBody String recommendations,
+            @PathVariable String id) {
+
+        kitService.setRecommendationSelected(recommendations, id);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

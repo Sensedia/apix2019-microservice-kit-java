@@ -35,4 +35,13 @@ public class JsonConfig {
         }
     }
 
+    public <T> T toObject(String json, Class<T> classe) {
+        try {
+            return objectMapper.readValue(json, classe);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+            throw new IllegalStateException();
+        }
+    }
+
 }

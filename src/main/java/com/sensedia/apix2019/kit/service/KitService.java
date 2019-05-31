@@ -17,6 +17,7 @@ import com.sensedia.apix2019.kit.repository.KitRepository;
 import com.sensedia.apix2019.kit.repository.RecommendationRepository;
 import com.sensedia.apix2019.kit.request.KitRequest;
 import com.sensedia.apix2019.kit.request.RecommendationRequest;
+import com.sensedia.apix2019.kit.request.RecommendationsPatchRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.sender.KitSender;
 
@@ -76,4 +77,40 @@ public class KitService {
         recommendationRepository.saveAll(recommendations);
     }
 
+    public void setRecommendationSelected(String recommendationsPatch, String kitId) {
+        Kit kit = kitRepository.findById(kitId).orElseThrow(ResourceNotFoundException::new);
+
+        RecommendationsPatchRequest recommendationsPatchRequest = jsonConfig.toObject(recommendationsPatch,
+                RecommendationsPatchRequest.class);
+
+        System.out.println(recommendationsPatchRequest);
+
+        kit.getRecommendations().forEach(recommendation -> {
+            recommendationsPatchRequest.getRecommendations().getId().forEach(id -> {
+                if (recommendation.getKitGroup() == id) {
+                    recommendation.setChosen(true);
+                }
+            });
+        });
+
+        recommendationRepository.saveAll(kit.getRecommendations());
+    }
+
+    // public void setRecommendationSelected(List<String> recommendationsId,
+    // String kitId) {
+    // Kit kit =
+    // kitRepository.findById(kitId).orElseThrow(ResourceNotFoundException::new);
+    //
+    // kit.getRecommendations().forEach(recommendation -> {
+    // System.out.println("idREcomendation " + recommendation.getId());
+    // recommendationsId.forEach(recommendationId -> {
+    // if (recommendation.getId().equals(recommendationId)) {
+    // recommendation.setChosen(true);
+    // }
+    // });
+    //
+    // });
+    //
+    // recommendationRepository.saveAll(kit.getRecommendations());
+    // }
 }
