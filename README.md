@@ -1,6 +1,6 @@
 # apix2019-microservice-kit-java :tshirt:
 
-### Como usar com docker:
+### Como executar via docker:
 
 1 - Execute o script 'generate-image.sh', presente na pasta raiz do projeto, para gerar a imagem docker da aplicação;
 
@@ -8,7 +8,7 @@
 
 OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem docker usando o comando 'generate-image.sh' e depois use o comando 'update-kit.sh', na pasta 'docker', para subir um novo container do docker. 
 
-### Como usar localmente:
+### Como executar / debugar localmente:
 
 1 - Localize o arquivo application.yml;
 
