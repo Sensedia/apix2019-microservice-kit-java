@@ -4,24 +4,19 @@
 
 1 - Execute o script 'generate-image.sh', presente na pasta raiz do projeto, para gerar a imagem docker da aplicação;
 
-2 - Execute o comando 'docker-start.sh' para iniciar o container da aplicação;
+2 - Execute o script 'docker-start.sh' para iniciar o container da aplicação;
 
-OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem docker usando o comando 'generate-image.sh' e depois use o comando 'update-kit.sh', na pasta 'docker', para subir um novo container do docker. 
+OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita os dois passos anteriores.  
 
 ### Como executar / debugar localmente:
 
 1 - Localize o arquivo application.yml;
 
-  - Edite a propriedade rabbit.rabbitmq apontando o ip do container rabbitmq_apix2019;
+  - Altere o valor da propriedade rabbit.host para `localhost`;
 
-  - Edite a propriedade datasource.url apontando o ip do container mysql_apix2019;
-
-Para descobrir o ip do container, execute o seguinte comando (resgatar o valor IPAddress): 
-```
-$ docker inspect container_name
-```
+  - Altere o valor da propriedade datasource.url substituindo o valor `mysql` por `localhost`;
   
-2 - Diretamente pela IDE, execute a classe ApiKitApplication em modo "run" ou "debug".
+2 - Diretamente pelo Intelijj, execute a classe ApiKitApplication em modo "run" ou "debug".
 
 ##### Para acessar o console de administração do RabbitMQ:
 http://[docker host IP]:15672/#/
