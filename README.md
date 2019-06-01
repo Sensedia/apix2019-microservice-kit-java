@@ -18,6 +18,32 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
   
 2 - Diretamente pelo Intelijj, execute a classe ApiKitApplication em modo "run" ou "debug".
 
+### Como testar se o serviço está salvando os kits devidamente:
+
+1 - Execute um post para a seguinte uri > `localhost:5060/kits`. Você pode utilizar o postman ou outra ferramenta de sua preferência para fazer isso.
+  - Como todo bom post,  necessário informar o body. Um exemplo de entrada é:
+  
+```
+{
+   "phone":"+5519999999999",
+   "gender":"F",
+   "specifications":[
+      { 
+         "type":"PANT",
+         "color":"BLUE"
+      },
+      {
+         "type":"SHIRT",
+         "color":"WHITE"
+      },
+      {
+         "type":"SHOES",
+         "color":"BLACK"
+      }
+   ]
+}
+```
+
 ##### Para acessar o console de administração do RabbitMQ:
 http://[docker host IP]:15672/#/
 
