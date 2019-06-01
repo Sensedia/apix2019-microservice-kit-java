@@ -14,7 +14,7 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
 
   - Altere o valor da propriedade rabbit.host para `localhost`;
 
-  - Altere o valor da propriedade spring.datasource.url substituindo o valor `jdbc:mysql://mysql:3306/...` por `jdbc:mysql://localhost:3306/...`;
+  - Altere o valor da propriedade spring.datasource.url substituindo `jdbc:mysql://mysql:3306/...` por `jdbc:mysql://localhost:3306/...`;
   
 2 - Diretamente pelo Intelijj, execute a classe ApiKitApplication em modo "run" ou "debug".
 
