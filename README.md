@@ -16,7 +16,10 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
   - Edite a propriedade datasource.url apontando o ip do container mysql_apix2019;
 
-*Para descobrir o ip do container, execute o seguinte comando: docker inspect <container_name>. Valor: IPAddress;
+Para descobrir o ip do container, execute o seguinte comando para resgatar o valor IPAddress: 
+```
+$ docker inspect <container_name>
+```
   
 2 - Diretamente pela IDE, execute a classe ApiKitApplication em modo "run" ou "debug".
 
