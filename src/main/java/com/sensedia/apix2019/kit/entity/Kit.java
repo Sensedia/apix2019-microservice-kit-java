@@ -62,11 +62,11 @@ public class Kit {
                 .gender(gender)
                 .specifications(specifications.stream().map(Specification::toResponse).sorted(typeSpecComparator)
                         .collect(Collectors.toList()))
-                .firstRecommendations(recommendations.stream().filter(x -> x.getKitGroup() == 0)
+                .firstRecommendation(recommendations.stream().filter(x -> x.getKitGroup() == 0)
                         .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList()))
-                .secondRecommendations(recommendations.stream().filter(x -> x.getKitGroup() == 1)
+                .secondRecommendation(recommendations.stream().filter(x -> x.getKitGroup() == 1)
                         .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList()))
-                .thirdRecommendations(recommendations.stream().filter(x -> x.getKitGroup() == 2)
+                .thirdRecommendation(recommendations.stream().filter(x -> x.getKitGroup() == 2)
                         .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList()))
                 .build();
     }

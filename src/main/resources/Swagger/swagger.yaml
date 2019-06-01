@@ -465,7 +465,7 @@ definitions:
         example: "2019-05-29"
       kitGroup:
         type: number
-        description: Identifier of one of tree recommendations. The 0 represents the fristRecommendations. The 1 represents the secondRecommendations. The 2 represents the thirdRecommendations.
+        description: Identifier of one of tree recommendations. The 0 represents the fristRecommendations. The 1 represents the secondRecommendation. The 2 represents the thirdRecommendation.
         example:  1
       chosen:
         type: boolean
