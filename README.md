@@ -18,7 +18,7 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
 Para descobrir o ip do container, execute o seguinte comando para resgatar o valor IPAddress: 
 ```
-$ docker inspect <container_name>
+$ docker inspect container_name
 ```
   
 2 - Diretamente pela IDE, execute a classe ApiKitApplication em modo "run" ou "debug".
