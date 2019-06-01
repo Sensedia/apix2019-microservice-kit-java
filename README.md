@@ -14,7 +14,7 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
   - Edite a propriedade rabbit.rabbitmq apontando o ip do container rabbitmq_apix2019;
 
-  - Edite a propriedade datasource.url apontando o up do container mysql_apix2019;
+  - Edite a propriedade datasource.url apontando o ip do container mysql_apix2019;
 
 *Para descobrir o ip do container, execute o seguinte comando: docker inspect <container_name>. Valor: IPAddress;
   
