@@ -10,7 +10,7 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
 
 ### Como executar / debugar localmente:
 
-1 - Localize o arquivo application.yml;
+1 - Localize o arquivo 'application.yml';
 
   - Altere o valor da propriedade rabbit.host para `localhost`;
 
