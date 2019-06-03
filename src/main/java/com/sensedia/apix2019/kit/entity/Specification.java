@@ -15,15 +15,6 @@ import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Type;
 import com.sensedia.apix2019.kit.response.SpecificationResponse;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
 @Entity
 public class Specification {
 
@@ -42,12 +33,50 @@ public class Specification {
     @JoinColumn(name = "kit_id")
     private Kit kit;
 
+    public Specification() {
+
+    }
+
+    public Specification(Type type, Color color, Kit kit) {
+        this.type = type;
+        this.color = color;
+        this.kit = kit;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Kit getKit() {
+        return kit;
+    }
+
+    public void setKit(Kit kit) {
+        this.kit = kit;
+    }
+
     public SpecificationResponse toResponse() {
-        return SpecificationResponse.builder()
-                .id(id)
-                .type(type)
-                .color(color)
-                .build();
+        return new SpecificationResponse(id, type, color);
     }
 
 }

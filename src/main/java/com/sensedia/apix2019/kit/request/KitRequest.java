@@ -14,9 +14,6 @@ import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Gender;
 import com.sensedia.apix2019.kit.enumeration.Type;
 
-import lombok.Data;
-
-@Data
 public class KitRequest {
 
     private String phone;
@@ -24,11 +21,32 @@ public class KitRequest {
     private Gender gender;
     private List<SpecificationRequest> specifications = new ArrayList<>();
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public List<SpecificationRequest> getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(List<SpecificationRequest> specifications) {
+        this.specifications = specifications;
+    }
+
     public Kit toEntity() {
-        Kit kit = Kit.builder()
-                .phone(phone)
-                .gender(gender)
-                .build();
+        Kit kit = new Kit(phone, gender);
 
         List<Specification> specs = specifications.stream()
                 .map(spec -> spec.toEntity(kit))
@@ -40,7 +58,6 @@ public class KitRequest {
 
 }
 
-@Data
 class SpecificationRequest {
 
     @JsonDeserialize(using = TypeDeserializer.class)
@@ -49,12 +66,24 @@ class SpecificationRequest {
     @JsonDeserialize(using = ColorDeserializer.class)
     private Color color;
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Specification toEntity(Kit kit) {
-        return Specification.builder()
-                .kit(kit)
-                .type(type)
-                .color(color)
-                .build();
+        return new Specification(type, color, kit);
     }
 
 }

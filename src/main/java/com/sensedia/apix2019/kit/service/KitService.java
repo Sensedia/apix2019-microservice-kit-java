@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sensedia.apix2019.kit.config.JsonConfig;
@@ -21,16 +22,20 @@ import com.sensedia.apix2019.kit.request.RecommendationsPatchRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.sender.KitSender;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 @Service
 public class KitService {
 
-    private final KitRepository kitRepository;
-    private final KitSender kitSender;
-    private final RecommendationRepository recommendationRepository;
-    private final JsonConfig jsonConfig;
+    @Autowired
+    private KitRepository kitRepository;
+
+    @Autowired
+    private KitSender kitSender;
+
+    @Autowired
+    private RecommendationRepository recommendationRepository;
+
+    @Autowired
+    private JsonConfig jsonConfig;
 
     public String create(KitRequest kitRequest) {
 

@@ -5,9 +5,6 @@ import com.sensedia.apix2019.kit.entity.Recommendation;
 import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Type;
 
-import lombok.Data;
-
-@Data
 public class Item {
 
     private Type type;
@@ -18,18 +15,64 @@ public class Item {
     private String image;
     private Long date;
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+
     public Recommendation toEntity(Kit kit, int kitGroup) {
-        return Recommendation.builder()
-                .type(type)
-                .color(color)
-                .title(title)
-                .price(price)
-                .link(link)
-                .image(image)
-                .date(date)
-                .kitGroup(kitGroup)
-                .kit(kit)
-                .build();
+        return new Recommendation(type, color, title, price, link, image, date, kitGroup, kit);
     }
 
 }

@@ -2,6 +2,7 @@ package com.sensedia.apix2019.kit.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +20,12 @@ import com.sensedia.apix2019.kit.request.RecommendationsPatchRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.service.KitService;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/kits")
 public class KitController {
 
-    private final KitService kitService;
+    @Autowired
+    private KitService kitService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Void> kits(@RequestBody KitRequest kitRequest) {

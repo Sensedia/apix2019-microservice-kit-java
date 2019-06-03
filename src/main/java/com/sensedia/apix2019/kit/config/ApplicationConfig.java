@@ -3,9 +3,6 @@ package com.sensedia.apix2019.kit.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import lombok.Data;
-
-@Data
 @Configuration
 public class ApplicationConfig {
 
@@ -14,5 +11,13 @@ public class ApplicationConfig {
 
     @Value("${queue.recommendation-queue}")
     private String recommendationQueue;
+
+    public String getKitQueue() {
+        return kitQueue;
+    }
+
+    public String getRecommendationQueue() {
+        return recommendationQueue;
+    }
 
 }

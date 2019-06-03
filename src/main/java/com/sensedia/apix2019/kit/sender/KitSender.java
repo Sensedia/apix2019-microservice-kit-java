@@ -1,20 +1,23 @@
 package com.sensedia.apix2019.kit.sender;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sensedia.apix2019.kit.config.ApplicationConfig;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@RequiredArgsConstructor
 @Component
 public class KitSender {
 
-    private final ApplicationConfig applicationConfig;
-    private final RabbitTemplate rabbitTemplate;
+    private static final Logger log = LogManager.getLogger(KitSender.class);
+
+    @Autowired
+    private ApplicationConfig applicationConfig;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     public void send(String message) {
         log.info("Sending message: {}", message);

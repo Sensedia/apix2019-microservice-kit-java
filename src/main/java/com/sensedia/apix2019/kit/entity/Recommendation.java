@@ -1,6 +1,7 @@
 package com.sensedia.apix2019.kit.entity;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 import javax.persistence.Entity;
@@ -18,15 +19,6 @@ import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Type;
 import com.sensedia.apix2019.kit.response.RecommendationReponse;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
 @Entity
 public class Recommendation {
 
@@ -59,18 +51,113 @@ public class Recommendation {
     @JoinColumn(name = "kit_id")
     private Kit kit;
 
+    public Recommendation() {
+    }
+
+    public Recommendation(Type type, Color color, String title, Double price, String link, String image,
+            Long date, int kitGroup, Kit kit) {
+        this.type = type;
+        this.color = color;
+        this.title = title;
+        this.price = price;
+        this.link = link;
+        this.image = image;
+        this.date = date;
+        this.kitGroup = kitGroup;
+        this.kit = kit;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+
+    public int getKitGroup() {
+        return kitGroup;
+    }
+
+    public void setKitGroup(int kitGroup) {
+        this.kitGroup = kitGroup;
+    }
+
+    public boolean isChosen() {
+        return chosen;
+    }
+
+    public void setChosen(boolean chosen) {
+        this.chosen = chosen;
+    }
+
+    public Kit getKit() {
+        return kit;
+    }
+
+    public void setKit(Kit kit) {
+        this.kit = kit;
+    }
+
     public RecommendationReponse toResponse() {
-        return RecommendationReponse.builder()
-                .id(id)
-                .type(type)
-                .color(color)
-                .title(title)
-                .price(price)
-                .link(link)
-                .image(image)
-                .date(Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate())
-                .chosen(chosen)
-                .build();
+        LocalDate localDate = Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate();
+        return new RecommendationReponse(id, type, color, title, price, link, image, localDate, chosen);
     }
 
 }
