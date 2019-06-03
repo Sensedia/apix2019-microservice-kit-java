@@ -74,7 +74,7 @@
             "description": "Contact number of user."
           }
         ],
-        "summary": "Operation responsible for recovery an existing kit by phone.",
+        "summary": "Operation responsible for recovery kits by phone.",
         "operationId": "kitsByPhone",
         "produces": [
           "application/json"
@@ -83,7 +83,10 @@
           "200": {
             "description": "Kits",
             "schema": {
-              "$ref": "#/definitions/Kit"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Kit"
+              }
             }
           },
           "204": {
@@ -134,7 +137,7 @@
         "tags": [
           "Kits"
         ],
-        "summary": "Operation responsible for inform which recommendation the user purchased.",
+        "summary": "Operation responsible to inform which recommendation the user purchased.",
         "operationId": "partiallyUpdate",
         "consumes": [
           "application/json"
@@ -259,8 +262,9 @@
         "phone": {
           "type": "string",
           "description": "Contact number of user",
-          "maxLength": 255,
-          "example": 99999999999
+          "minLength": 14,
+          "maxLength": 14,
+          "example": "+5599999999999"
         },
         "gender": {
           "type": "string",
