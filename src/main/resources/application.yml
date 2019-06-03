@@ -16,7 +16,7 @@ spring:
     username: root
     password: apix2019
   rabbitmq:
-    host: rabbitmq
+    host: 172.29.0.5
     port: 5672
 
 queue:
