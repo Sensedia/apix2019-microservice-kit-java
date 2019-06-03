@@ -6,7 +6,7 @@
 
 2 - Execute o script 'docker-start.sh' para iniciar o container da aplicação;
 
-OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita o primeiro passo e execute o script 'update-kit' na sequência.  
+OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita o primeiro passo e execute o script 'update-kit.sh' na sequência.  
 
 ### Como executar / debugar localmente:
 
