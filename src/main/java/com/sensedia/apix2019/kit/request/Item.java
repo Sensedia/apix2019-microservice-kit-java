@@ -13,7 +13,6 @@ public class Item {
     private Double price;
     private String link;
     private String image;
-    private Long date;
 
     public Type getType() {
         return type;
@@ -63,16 +62,8 @@ public class Item {
         this.image = image;
     }
 
-    public Long getDate() {
-        return date;
-    }
-
-    public void setDate(Long date) {
-        this.date = date;
-    }
-
     public Recommendation toEntity(Kit kit, int kitGroup) {
-        return new Recommendation(type, color, title, price, link, image, date, kitGroup, kit);
+        return new Recommendation(type, color, title, price, link, image, kitGroup, kit);
     }
 
 }

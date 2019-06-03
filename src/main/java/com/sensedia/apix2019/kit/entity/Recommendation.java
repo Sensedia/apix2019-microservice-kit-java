@@ -41,8 +41,6 @@ public class Recommendation {
 
     private String image;
 
-    private Long date;
-
     private int kitGroup;
 
     private boolean chosen;
@@ -54,15 +52,13 @@ public class Recommendation {
     public Recommendation() {
     }
 
-    public Recommendation(Type type, Color color, String title, Double price, String link, String image,
-            Long date, int kitGroup, Kit kit) {
+    public Recommendation(Type type, Color color, String title, Double price, String link, String image, int kitGroup, Kit kit) {
         this.type = type;
         this.color = color;
         this.title = title;
         this.price = price;
         this.link = link;
         this.image = image;
-        this.date = date;
         this.kitGroup = kitGroup;
         this.kit = kit;
     }
@@ -123,14 +119,6 @@ public class Recommendation {
         this.image = image;
     }
 
-    public Long getDate() {
-        return date;
-    }
-
-    public void setDate(Long date) {
-        this.date = date;
-    }
-
     public int getKitGroup() {
         return kitGroup;
     }
@@ -156,8 +144,7 @@ public class Recommendation {
     }
 
     public RecommendationReponse toResponse() {
-        LocalDate localDate = Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate();
-        return new RecommendationReponse(id, type, color, title, price, link, image, localDate, chosen);
+        return new RecommendationReponse(id, type, color, title, price, link, image, chosen);
     }
 
 }

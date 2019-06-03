@@ -14,11 +14,10 @@ public class RecommendationReponse {
     private Double price;
     private String link;
     private String image;
-    private LocalDate date;
     private Boolean chosen;
 
     public RecommendationReponse(String id, Type type, Color color, String title, Double price, String link,
-            String image, LocalDate date, Boolean chosen) {
+            String image, Boolean chosen) {
         this.id = id;
         this.type = type;
         this.color = color;
@@ -26,7 +25,6 @@ public class RecommendationReponse {
         this.price = price;
         this.link = link;
         this.image = image;
-        this.date = date;
         this.chosen = chosen;
     }
 
@@ -56,10 +54,6 @@ public class RecommendationReponse {
 
     public String getImage() {
         return image;
-    }
-
-    public LocalDate getDate() {
-        return date;
     }
 
     public Boolean getChosen() {

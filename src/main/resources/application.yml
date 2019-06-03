@@ -12,11 +12,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
-    url: jdbc:mysql://172.17.0.1:3306/apix2019?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql/apix2019?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: apix2019
   rabbitmq:
-    host: rabbitmq_apix2019
+    host: rabbitmq
     port: 5672
 
 queue:
