@@ -16,7 +16,7 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
 
   - Altere o valor da propriedade spring.datasource.url substituindo `jdbc:mysql://mysql:3306/...` por `jdbc:mysql://localhost:3306/...`;
   
-2 - Diretamente pelo Intelijj, execute a classe ApiKitApplication em modo "run" ou "debug".
+2 - Diretamente pelo InteliJ, execute a classe ApiKitApplication em modo "run" ou "debug".
 
 ### Como testar se o serviço está salvando os kits devidamente:
 
