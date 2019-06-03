@@ -22,6 +22,7 @@ spring:
 queue:
   kit-queue: apix-kit-queue
   recommendation-queue: apix-recommendation-queue
+  notification-queue: apix-notification-queue
 
 management:
   endpoints:

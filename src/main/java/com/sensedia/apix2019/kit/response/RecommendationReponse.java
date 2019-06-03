@@ -1,7 +1,5 @@
 package com.sensedia.apix2019.kit.response;
 
-import java.time.LocalDate;
-
 import com.sensedia.apix2019.kit.enumeration.Color;
 import com.sensedia.apix2019.kit.enumeration.Type;
 

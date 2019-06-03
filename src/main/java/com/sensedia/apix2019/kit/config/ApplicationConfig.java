@@ -12,12 +12,16 @@ public class ApplicationConfig {
     @Value("${queue.recommendation-queue}")
     private String recommendationQueue;
 
+    @Value("${queue.notification-queue}")
+    private String notificationQueue;
+
     public String getKitQueue() {
         return kitQueue;
     }
 
+    public String getNotificationQueue() { return notificationQueue; }
+
     public String getRecommendationQueue() {
         return recommendationQueue;
     }
-
 }

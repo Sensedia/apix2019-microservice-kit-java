@@ -108,7 +108,7 @@ public class Kit {
         List<RecommendationReponse> thirdRecommendation = recommendations.stream().filter(x -> x.getKitGroup() == 2)
                 .map(Recommendation::toResponse).sorted(typeRecComparator).collect(Collectors.toList());
 
-        return new KitResponse(id, phone, gender, specificationResponse, firstRecommendation, secondRecommendation,
+        return new KitResponse(id, gender, specificationResponse, firstRecommendation, secondRecommendation,
                 thirdRecommendation);
     }
 
@@ -116,7 +116,7 @@ public class Kit {
         List<SpecificationResponse> specificationResponse = specifications.stream()
                 .map(Specification::toResponse)
                 .collect(Collectors.toList());
-        return new KitResponse(id, phone, gender, specificationResponse);
+        return new KitResponse(id, gender, specificationResponse);
     }
 
 }

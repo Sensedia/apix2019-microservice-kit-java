@@ -7,25 +7,22 @@ import com.sensedia.apix2019.kit.enumeration.Gender;
 public class KitResponse {
 
     private String id;
-    private String phone;
     private Gender gender;
     private List<SpecificationResponse> specifications;
     private List<RecommendationReponse> firstRecommendation;
     private List<RecommendationReponse> secondRecommendation;
     private List<RecommendationReponse> thirdRecommendation;
 
-    public KitResponse(String id, String phone, Gender gender, List<SpecificationResponse> specifications) {
+    public KitResponse(String id, Gender gender, List<SpecificationResponse> specifications) {
         this.id = id;
-        this.phone = phone;
         this.gender = gender;
         this.specifications = specifications;
     }
 
-    public KitResponse(String id, String phone, Gender gender, List<SpecificationResponse> specifications,
+    public KitResponse(String id, Gender gender, List<SpecificationResponse> specifications,
             List<RecommendationReponse> firstRecommendation, List<RecommendationReponse> secondRecommendation,
             List<RecommendationReponse> thirdRecommendation) {
         this.id = id;
-        this.phone = phone;
         this.gender = gender;
         this.specifications = specifications;
         this.firstRecommendation = firstRecommendation;
@@ -35,10 +32,6 @@ public class KitResponse {
 
     public String getId() {
         return id;
-    }
-
-    public String getPhone() {
-        return phone;
     }
 
     public Gender getGender() {

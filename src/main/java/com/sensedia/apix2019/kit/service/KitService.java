@@ -21,6 +21,7 @@ import com.sensedia.apix2019.kit.request.RecommendationRequest;
 import com.sensedia.apix2019.kit.request.RecommendationsPatchRequest;
 import com.sensedia.apix2019.kit.response.KitResponse;
 import com.sensedia.apix2019.kit.sender.KitSender;
+import com.sensedia.apix2019.kit.request.NotificationRequest;
 
 @Service
 public class KitService {
@@ -50,7 +51,7 @@ public class KitService {
 
         kitRepository.save(entity);
         String kitJson = jsonConfig.toJson(entity.toQueue());
-        kitSender.send(kitJson);
+        kitSender.sendToCrawler(kitJson);
 
         return entity.getId();
     }
@@ -80,6 +81,13 @@ public class KitService {
             kitGroup.incrementAndGet();
         });
         recommendationRepository.saveAll(recommendations);
+
+        sendToNotification(kit.getPhone(), recommendations.size());
+    }
+
+    private void sendToNotification(String phone, Integer recommendationsCount) {
+        NotificationRequest notificationRequest = new NotificationRequest(phone, recommendationsCount);
+        kitSender.sendToNotification(jsonConfig.toJson(notificationRequest));
     }
 
     public void updateSelectedRecommendations(String kitId, RecommendationsPatchRequest recommendationsPatchRequest) {
