@@ -12,7 +12,7 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
-    url: jdbc:mysql://elasticsearch_apix2019/apix2019?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql_apix2019/apix2019?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: apix2019
   rabbitmq:
