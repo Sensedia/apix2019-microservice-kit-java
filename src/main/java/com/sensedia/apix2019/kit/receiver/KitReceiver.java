@@ -22,18 +22,9 @@ public class KitReceiver {
     @Autowired
     private KitService kitService;
 
-    @RabbitListener(queues = "${queue.recommendation-queue}")
+    // está faltando uma anotação bem aqui ;)
     public void receiver(Message message) {
-        log.info("Message received: {}", message.toString());
-        try {
-            RecommendationRequest recommendationRequest = jsonConfig.toObject(message.getBody(),
-                    RecommendationRequest.class);
-            kitService.createRecommendation(recommendationRequest);
-        } catch (ResourceNotFoundException e) {
-            log.error("Message not fund", e);
-        } catch (IllegalStateException e) {
-            log.error("Erro parsing json", e);
-        }
+        
     }
 
 }

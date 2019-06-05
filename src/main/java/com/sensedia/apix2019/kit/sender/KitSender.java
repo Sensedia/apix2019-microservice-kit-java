@@ -12,21 +12,9 @@ public class KitSender {
 
     private static final Logger log = LogManager.getLogger(KitSender.class);
 
-    @Autowired
-    private ApplicationConfig applicationConfig;
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    // dica de ouro: use RabbitTemplate!
 
     public void sendToCrawler(String message) {
-        log.info("Sending message: {}", message);
-        rabbitTemplate.convertAndSend(applicationConfig.getKitQueue(), message);
-        log.info("Message sent.");
-    }
-
-    public void sendToNotification(String message) {
-        log.info("Sending message: {}", message);
-        rabbitTemplate.convertAndSend(applicationConfig.getNotificationQueue(), message);
-        log.info("Message sent.");
+        
     }
 }
