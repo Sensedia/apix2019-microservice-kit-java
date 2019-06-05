@@ -82,7 +82,7 @@ public class KitService {
         });
         recommendationRepository.saveAll(recommendations);
 
-        sendToNotification(kit.getPhone(), recommendations.size());
+        sendToNotification(kit.getPhone(), recommendationRequest.getRecommendations().size());
     }
 
     private void sendToNotification(String phone, Integer recommendationsCount) {
